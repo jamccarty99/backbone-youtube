@@ -16,36 +16,28 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="header">
-          <h1><i class="fa fa-video"></i> Videos</h1>
+          <h1><i class="fa fa-video"></i>Project YouTube</h1>
         </div>
 
-        <div class="video-container show">
+        <div id="search-container" class="video-container show">
           <div class="video-list"></div>
 
           <div class="form-group">
-            <label>Search Videos</label>
-            <input type="text" class="form-control" id="search-input" placeholder="search" value="Snowboard tricks">
+            <label> <input type="text" class="form-control" id="search-text-input" placeholder="search" value="Snowboard tricks"><button class='fa fa-search' id="button-holder"></button></label>
           </div>
-          <button class="btn btn-primary search-videos">search</button>
         </div>
-
-        <div class="reviews-container"></div>
       </div>
     </div>
   </div>
 
   <script id="video-template" type="text/x-handlebars-template">
-    <div class="img-container">
-      <img src="{{image_url}}">
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player"></div>
+    <div id="video-description-box" class="content-container">
+      <p class="video-name">{{ title }}</p>
+      <hr/>
+      <p class="video-description">{{ description }}</p>
     </div>
-    <div class="content-container">
-      <a href="#/beers/{{_id}}">
-      <p class="beer-name">{{name}}</p></a>
-      <input class="beer-name edit-mode" value="{{name}}">
-      <p>{{style}} - {{abv}}% ABV</p>
-    </div>
-    <i class="fa fa-times remove"></i>
-    <i class="fa fa-pencil-square-o edit"></i>
   </script>
 
   <script src="collections/models/VideoModel.js"></script>
