@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/backbone/backbone-min.js"></script>
+  <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+  <title>Video List</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="header">
+          <h1><i class="fa fa-video"></i> Videos</h1>
+        </div>
+
+        <div class="video-container show">
+          <div class="video-list"></div>
+
+          <div class="form-group">
+            <label>Search Videos</label>
+            <input type="text" class="form-control" id="search-input" placeholder="search" value="Snowboard tricks">
+          </div>
+          <button class="btn btn-primary search-videos">search</button>
+        </div>
+
+        <div class="reviews-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <script id="video-template" type="text/x-handlebars-template">
+    <div class="img-container">
+      <img src="{{image_url}}">
+    </div>
+    <div class="content-container">
+      <a href="#/beers/{{_id}}">
+      <p class="beer-name">{{name}}</p></a>
+      <input class="beer-name edit-mode" value="{{name}}">
+      <p>{{style}} - {{abv}}% ABV</p>
+    </div>
+    <i class="fa fa-times remove"></i>
+    <i class="fa fa-pencil-square-o edit"></i>
+  </script>
+
+  <script src="collections/models/VideoModel.js"></script>
+  <script src="collections/VideosCollection.js"></script>
+  <script src="collections/models/AppModel.js"></script>
+  <script src="views/AppView.js"></script>
+  <script src="routers/router.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

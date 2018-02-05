@@ -1,0 +1,29 @@
+{
+  "name": "backbone-youtube",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "backbone": "^1.3.3",
+    "bootstrap": "^4.0.0",
+    "handlebars": "^4.0.11",
+    "jquery": "^3.3.1",
+    "js": "^0.1.0",
+    "popper.js": "^1.12.9",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamccarty99/backbone-youtube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamccarty99/backbone-youtube/issues"
+  },
+  "homepage": "https://github.com/jamccarty99/backbone-youtube#readme"
+}
