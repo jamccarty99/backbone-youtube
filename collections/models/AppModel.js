@@ -12,7 +12,7 @@ var AppModel = Backbone.Model.extend({
 
   initialize: function () {
     this.listenTo(this, 'change:current_video', function () {
-      this.get('current_video').get('videos').url = 'https://www.googleapis.com/youtube/v3/search' + this.get('#current_video').id + '&key=AIzaSyBcUj-h1dSz93gent1Pu4y9wKl1qSQ8VpE&fields=items(id,snippet(title,description))&part=snippet';
+      this.get('current_video').get('videos').url = 'https://www.googleapis.com/youtube/v3/search?' + encodeURI($('#search-text-input').val()) + '&key=AIzaSyBcUj-h1dSz93gent1Pu4y9wKl1qSQ8VpE&fields=items(id,snippet(title,description))&part=snippet';
     });
   },
  });

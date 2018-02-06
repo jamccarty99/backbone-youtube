@@ -1,14 +1,15 @@
 var VideoModel = Backbone.Model.extend({
-  idAttribute: '_id',
+  urlRoot: 'https://www.googleapis.com/youtube/v3/search?',
+  idAttribute: 'id',
 
   defaults: function () {
     return {
       title: '',
       description: '',
-      videos: new VideosCollection(),
+      videos: new VideosCollection().fetch(),
     }
   },
-  // when 'reviews' come in from the server, they're an array...
+  // when 'videos' come in from the server, they're an array...
   // this will set them back to being a collection
   parse: function (response) {
     var videos = this.get('videos') || new VideosCollection();
