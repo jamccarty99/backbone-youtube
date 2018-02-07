@@ -8,7 +8,7 @@ var VideoRouter = Backbone.Router.extend({
 
     var allVideos = appModel.get('videos');
 
-    var currentVideo = allVideos.findWhere({ id: id });
+    var currentVideo = allVideos.findWhere({ id: id[1] });
 
     appModel.set('current_video', currentVideo);
     appModel.set('show_videos', true);
