@@ -1,76 +1,33 @@
 var VideoModel = Backbone.Model.extend({
   idAttribute: 'id',
-  urlRoot: 'https://www.googleapis.com/youtube/v3/search?',
+  urlRoot: 'https://www.googleapis.com/youtube/v3/search?&fields=items(id,snippet(title,description,thumbnails))&part=snippet&type=video&vdideoEmbeddable=true&key=AIzaSyArisV7p7t9_m16hXa2FQ-o3-h5c8a6eZ4&q=',
 
   defaults: function (response) {
     return {
       id: this.id,
       title: this.title,
       description: this.description,
+      thumbnail: this.thumbnail,
       url: encodeURI($('#search-text-input').val()),
       videos: new VideosCollection(),
     }
   },
 
-  parse: function(response){
+  parse: function(response) {
 
   			console.log("Inside Parse");
         console.log(response.items);
   		  var responseArray = response.items;
         for (var i = 0; i < responseArray.length; i++) {
-          var id = responseArray[i].id.videoId;
-          var title = responseArray[i].snippet.title;
-          var description = responseArray[i].snippet.description;
+          var id = response.items[i].id.videoId;
+          var title = response.items[i].snippet.title;
+          var description = response.items[i].snippet.description;
+          var thumbnail = response.items[i].snippet.thumbnails.medium;
+          var videoModel = new VideoModel(response.items);
         }
-        console.log(this.model);
-      //  .append(id);
+        console.log(id);
 
-
-  			//return models
   			return this.models;
 
   		},
   	});
-
-    // var VideosCollectionInstance = new VideosCollection();
-    //
-    // initialize: function () {
-    //   this.bind("reset", function (model, options) {
-    //     console.log("Inside event");
-    //     console.log(model);
-    //
-    //   });
-    // }
-//   	var video = new VideoCollection();
-//
-//   	video.fetch({
-//   		success: function(response,xhr) {
-//   			console.log("Inside success");
-//   			console.log(response);
-//   		},
-//   		error: function (errorResponse) {
-//   			console.log(errorResponse)
-//   		}
-//   	});
-// //
-//     // var parsed_response;
-//     //
-//     // parsed_response = _(response).clone();
-//     //
-//     // var parsed_response = _.map(parsed_response, function (obj) {
-//     //     return function (_obj) {
-//     //         if (_obj.prop === "" || typeof _obj.prop === "null" ) {
-//     //             _obj.isProp = false;
-//     //         }
-//     //         else {
-//     //             _obj.isProp = true;
-//     //         }
-//     //         return _obj;
-//     //     }(obj)
-//
-//     // console.log(response);
-//     // console.log(parsed_response);
-//     return parsedResponse;
-// }
-//
-//});

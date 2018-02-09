@@ -13,6 +13,7 @@ var AppView = Backbone.View.extend({
       this.$videoList = this.$('.video-list');
       this.$videoName = this.$('.video-name');
       this.$videoDescription = this.$('video-description');
+      this.$videoThumbnail = this.$('video-thumbnail');
       this.$url = encodeURI($('#search-text-input').val());
 
       this.listenTo(this.model.get('videos'), 'add', this.renderVideo);
@@ -32,7 +33,7 @@ var AppView = Backbone.View.extend({
     //   url: this.$url,
     // }, { wait: true });
 
-    console.log();
+    console.log('response');
     this.render();
   },
 

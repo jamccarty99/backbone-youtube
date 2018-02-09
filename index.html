@@ -19,15 +19,14 @@
           <h1><i class="fa fa-video"></i>Project YouTube</h1>
         </div>
         <div class="form-group">
-          <label> <input type="text" class="form-control" id="search-text-input" placeholder="search" value="dogs"><button class='fa fa-search' id="button-holder"></button></label>
+          <label> <input type="text" class="form-control" id="search-text-input" placeholder="search" value="Winter Oympics 2018"><button class='fa fa-search' id="button-holder"></button></label>
         </div>
       </div>
     </div>
     <div id="search-container" class="video-container show">
       <div class="row">
-        <div class="col-md-12 col-md-offset-2">
-          <div class="video-list">
-          </div>
+        <div class="video-list">
+
         </div>
       </div>
     </div>
@@ -35,85 +34,29 @@
 
   <script id="video-template" type="text/x-handlebars-template">
     <div class="container">
-      <div id="ytplayer"></div>
-        <script>
-          // Load the IFrame Player API code asynchronously.
-          var tag = document.createElement('script');
-          tag.src = "https://www.youtube.com/player_api";
-          var firstScriptTag = document.getElementsByTagName('script')[0];
-          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-          // Replace the 'ytplayer' element with an <iframe> and
-          // YouTube player after the API code downloads.
-          var player;
-          function onYouTubePlayerAPIReady() {
-            player = new YT.Player('ytplayer', {
-              height: '360',
-              width: '640',
-              videoId: 'id',
-              frameborder: "0",
-              autoplay: '1',
-              frameborder: "0",
-              events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-              }
-            });
-          }
-          function onPlayerReady(event) {
-            document.getElementById('ytplayer').style.borderColor = '#FF6D00';
-          }
-          function changeBorderColor(playerStatus) {
-            var color;
-            if (playerStatus == -1) {
-              color = "#37474F"; // unstarted = gray
-            } else if (playerStatus == 0) {
-              color = "#FFFF00"; // ended = yellow
-            } else if (playerStatus == 1) {
-              color = "#33691E"; // playing = green
-            } else if (playerStatus == 2) {
-              color = "#DD2C00"; // paused = red
-            } else if (playerStatus == 3) {
-              color = "#AA00FF"; // buffering = purple
-            } else if (playerStatus == 5) {
-              color = "#FF6DOO"; // video cued = orange
-            }
-            if (color) {
-              document.getElementById('ytplayer').style.borderColor = color;
-            }
-          }
-          function onPlayerStateChange(event) {
-            changeBorderColor(event.data);
-          }
-      </script>
+      <div class="row">
+        <div class="video-detail col-md-8">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/6KxA9MopRBo" frameborder="0"></iframe> <!--{{id}}-->
+          </div>
+        </div>
+        <div class="thumbnails-list col-md-4">
+          <img class="thumbnail-image" src={{url}}>
+        </div>
+      </div>
 
       <div class="row">
-        <div class="col-md-12 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
           <div id="video-description-box" class="content-container">
-            <p class="video-name">{{ title }}</p>
+            <p class="video-name text-center">{{ title }}</p>
             <hr/>
-            <p class="video-description">{{ description }}</p>
+            <p class="video-description text-center">{{ description }}</p>
           </div>
         </div>
       </div>
-    </script>
-<!--
+    </div>
+  </script>
 
-<iframe id="existing-iframe-example"
-    width="640" height="360"
-    src="'https://www.googleapis.com/youtube/v3/search?' + {{url}} + '&key=AIzaSyArisV7p7t9_m16hXa2FQ-o3-h5c8a6eZ4&fields=items(id,snippet(title,description,thumbnails))&part=snippet'"
-    frameborder="0"
-    style="border: solid 4px #37474F"
-></iframe>
-
-  <script type="text/javascript">
-    var tag = document.createElement('script');
-    tag.id = 'iframe-demo';
-    tag.src = 'https://www.youtube.com/iframe_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
--->
   <script src="collections/models/VideoModel.js"></script>
   <script src="collections/VideosCollection.js"></script>
   <script src="collections/models/AppModel.js"></script>
